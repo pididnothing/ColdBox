@@ -1,0 +1,23 @@
+# Render Deployment Configuration
+# This file can be used for automatic deployment on Render
+
+services:
+  # Web Service (Backend + Frontend)
+  - type: web
+    name: coldbox
+    env: node
+    buildCommand: npm run build
+    startCommand: npm start
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: DB_HOST
+        sync: false
+      - key: DB_PORT
+        sync: false
+      - key: DB_NAME
+        sync: false
+      - key: DB_USER
+        sync: false
+      - key: DB_PASSWORD
+        sync: false
