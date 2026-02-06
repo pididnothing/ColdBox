@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import './App.css';
 import { User } from './types';
 import { getUser, getAllUsers } from './services/api';
