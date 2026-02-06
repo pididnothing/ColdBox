@@ -6,11 +6,13 @@ services:
   - type: web
     name: coldbox
     env: node
-    buildCommand: npm run build
+    buildCommand: npm install && npm run build
     startCommand: npm start
     envVars:
       - key: NODE_ENV
         value: production
+      - key: NODE_ENV_BUILD
+        value: development
       - key: DB_HOST
         sync: false
       - key: DB_PORT

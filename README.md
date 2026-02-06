@@ -118,7 +118,7 @@ This application is configured to deploy as a single web service on Render, serv
 2. **Create a new Web Service on Render:**
    - Connect your repository
    - Use the following settings:
-     - **Build Command:** `npm run build`
+     - **Build Command:** `npm install && npm run build`
      - **Start Command:** `npm start`
      - **Environment:** `Node`
 
@@ -163,6 +163,20 @@ You can also use the included `render.yaml` file for automated deployment:
 - All routes starting with `/api` are handled by the backend API
 - All other routes serve the React app (for client-side routing)
 - The build process compiles both frontend and backend before deployment
+
+### Troubleshooting Build Issues
+
+If you encounter TypeScript errors during Render build:
+
+1. **Ensure `.npmrc` is committed:** The `.npmrc` file ensures devDependencies are installed (required for TypeScript compilation)
+2. **Check Build Command:** Use `npm install && npm run build` (not just `npm run build`)
+3. **Verify Environment Variables:** Make sure all database credentials are set correctly
+4. **Check Build Logs:** Look for "npm ci --include=dev" in the logs to confirm devDependencies are being installed
+
+Common error: `Could not find a declaration file for module 'react'`
+
+- **Cause:** devDependencies not installed
+- **Fix:** Ensure `.npmrc` contains `production=false`
 
 ## 🔒 Security Notes
 
